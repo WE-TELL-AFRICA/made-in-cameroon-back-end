@@ -8,7 +8,7 @@ class ProductController extends Controller
 {
     //
     public function index(){
-        $products = Product::where('is_approve', true)->with('images')->paginate(4);
+        $products = Product::where('is_approve', true)->with('images')->paginate(2);
         return response()->json([
             'message' => 'success',
             'list_products' => $products], 200);
@@ -33,6 +33,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'category_id' => 'required|integer',
             'is_approve' => 'required|boolean',
+            'information' => '',
             'image.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096'
         ]);
 

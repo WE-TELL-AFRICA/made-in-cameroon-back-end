@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
+            $table->string('information');
             $table->boolean('is_approve')->default(false);
             $table->timestamps();
             $table->unsignedBigInteger('user_id')->nullable();
@@ -20,6 +21,8 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
+
+
     }
     /**
      * Reverse the migrations.
